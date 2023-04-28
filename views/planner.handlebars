@@ -1,0 +1,636 @@
+  <div>
+<head>
+
+
+  <a href="/" class="home-button">Home</a>
+
+  <title>My Class Schedule</title>
+  <style>
+      .table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    color: #212529;
+    border-radius: 0.25rem;
+  }
+  .table th,
+  .table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+    color: #003399;
+  }
+  .table th {
+    font-weight: 600;
+    background-color: #f8f9fa;
+    text-align: left;
+    color: #003399;
+  }
+  .table tbody tr:nth-of-type(even) {
+    background-color: #f8f9fa;
+  }
+  .table tbody tr:hover {
+    background-color: #e9ecef;
+  }
+  .table button {
+    padding: 0.25rem 0.5rem;
+  }
+    .home-button {
+      background-color: #003399;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 20px;
+      position: relative; top:20px;
+      
+    }
+
+    .home-button:hover {
+      background-color: #005DAE;
+      cursor: pointer;
+    }
+
+    body {
+      background-color: #f0f8ff;
+      /* light blue */
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: #003399;
+      /* dark blue */
+    }
+
+    h2{
+      margin: 20px;
+    }
+
+    form {
+      margin: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type=text] {
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      width: 60%;
+    }
+
+    input[type=submit] {
+      background-color: #003399;
+      color: white;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    select {
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    table {
+      margin: 20px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #003399;
+      color: white;
+    }
+
+    .class-list {
+      margin: 20px;
+    }
+
+    .class {
+      margin-bottom: 10px;
+    }
+
+    .class h3 {
+      margin: 0;
+      font-size: 1.2em;
+      color: #003399;
+    }
+
+    .class p {
+      margin: 0;
+      color: #666;
+    }
+
+    /* Set styles for each class item */
+    .class-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background-color: #fff;
+      border-radius: 0.25rem;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Add hover effect */
+    .class-item:hover {
+      transform: translateY(-0.25rem);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+
+    /* Set styles for class info */
+    .class-info {
+      flex: 1;
+      margin-left: 1rem;
+    }
+
+    .class-info h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .class-info p {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    /* Set styles for class image */
+    .class-image {
+      width: 6rem;
+      height: 6rem;
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    }
+
+    /* Set styles for different class types */
+    .computer-science {
+      border-left: 0.5rem solid #6c5ce7;
+    }
+    .math-class {
+      border-left: 0.5rem solid #e7a65c;
+    }
+    .art-class {
+      border-left: 0.5rem solid #cf46ad;
+    }
+    .science-class {
+      border-left: 0.5rem solid #28c43d;
+    }
+    .history-class {
+      border-left: 0.5rem solid #fa4747;
+    }
+    .other-class {
+      border-left: 0.5rem solid #f1ee30;
+    }
+  </style>
+</head>
+
+<body>
+    <form class="new-schedule-form">
+      <label for="schedule-name">Add a class:</label>
+      <select id="schedule-name" >
+        <option value="">Select a course...</option>
+        <option value="MATH 2641|TTh|10:00am - 11:00am|Building B, Room 202">
+          MATH 2641 - Linear Algebra I (TTh 10:00am - 11:00am)
+        </option>
+        <option value="MATH 3020|MWF|9:00am - 10:00am|Building C, Room 101">
+          MATH 3020 - Applied Probability and Statistics for Computer Science
+          (MWF 9:00am - 10:00am)
+        </option>
+        <option value="CSC 3350|MW|1:00pm - 2:00pm|Building A, Room 301">
+          CSC 3350 - Software Development-CTW (MW 1:00pm - 2:00pm)
+        </option>
+        <option value="CSC 2720|MWF|10:00am - 12:00pm|Building A, Room 203">
+          CSC 2720 - Data Structures (MWF 10:00am - 12:00pm)
+        </option>
+        <option value="CSC 3210|TTh|11:00am - 12:00pm|Building C, Room 102">
+          CSC 3210 - Computer Organization and Programming (TTh 11:00am -
+          12:00pm)
+        </option>
+        <option value="CSC 3320|MWF|2:00pm - 3:00pm|Building A, Room 204">
+          CSC 3320 - System-Level Programming (MWF 2:00pm - 3:00pm)
+        </option>
+        <option value="CSC 4320|TTh|9:00am - 10:00am|Building B, Room 201">
+          CSC 4320 - Operating Systems (TTh 9:00am - 10:00am)
+        </option>
+        <option value="CSC 4330|MWF|12:00pm - 1:00pm|Building A, Room 201">
+          CSC 4330 - Programming Language Concepts (MWF 12:00pm - 1:00pm)
+        </option>
+        <option value="CSC 4520|TTh|1:00pm - 2:00pm|Building C, Room 101">
+          CSC 4520 - Design and Analysis of Algorithms (TTh 1:00pm - 2:00pm)
+        </option>
+        <option value="MATH 1010|TTh|3:00pm - 4:00pm|Building B, Room 205">
+          MATH 1010 - Calculus I (TTh 3:00pm - 4:00pm)
+        </option>
+        <option value="CSC 1000|TTh|8:00am - 9:00am|Building B, Room 104">
+          CSC 1000 - Introduction to Computer Science (TTh 8:00am - 9:00am)
+        </option>
+        <option value="CSC 2000|TTh|4:00pm - 5:00pm|Building A, Room 101">
+          CSC 2000 - Data Structures and Algorithms (TTh 4:00pm - 5:00pm)
+        </option>
+        <option value="CSC 3000|TTh|6:00pm - 7:00pm|Building C, Room 201">
+          CSC 3000 - Computer Organization and Architecture (TTh 6:00pm - 7:00pm)
+        </option>
+        <option value="CSC 5000|MWF|3:00pm - 4:00pm|Building C, Room 201">
+          CSC 5000 - Software Engineering (MWF 3:00pm - 4:00pm)
+        </option>
+        <option value="CSC 6000|MWF|5:00pm - 6:00pm|Building B, Room 203">
+          CSC 6000 - Database Systems (MWF 5:00pm - 6:00pm)
+        </option>
+        <option value="CSC 7000|MWF|9:00am - 10:00am|Building A, Room 103">
+          CSC 7000 - Computer Networks (MWF 9:00am - 10:00am)
+        </option>
+        <option value="CSC 8000|MWF|11:00am - 12:00pm|Building B, Room 202">
+          CSC 8000 - Artificial Intelligence (MWF 11:00am - 12:00pm)
+        </option>
+        <option value="CSC 9000|TTh|11:00am - 12:00pm|Building C, Room 202">
+          CSC 9000 - Human-Computer Interaction (TTh 11:00am - 12:00pm)
+        </option>
+        <option value="CSC 1001|TTh|10:00am - 11:00am|Building A, Room 102">
+          CSC 1001 - Web Development (TTh 10:00am - 11:00am)
+        </option>
+        <option value="ENG 101|MWF|9:00am - 10:00am|Building A, Room 102">
+          ENG 101 - Composition and Rhetoric (MWF 9:00am - 10:00am)
+        </option>
+        <option value="BIO 201|TTh|10:00am - 11:00am|Building A, Room 301">
+          BIO 201 - Anatomy and Physiology (TTh 10:00am - 11:00am)
+        </option>
+        <option value="HIST 101|MWF|9:00am - 10:00am|Building B, Room 201">
+          HIST 101 - World History I (MWF 9:00am - 10:00am)
+        </option>
+        <option value="PHIL 201|MW|1:00pm - 2:00pm|Building C, Room 104">
+          PHIL 201 - Introduction to Ethics (MW 1:00pm - 2:00pm)
+        </option>
+        <option value="ART 101|MWF|10:00am - 12:00pm|Building B, Room 103">
+          ART 101 - Drawing Fundamentals (MWF 10:00am - 12:00pm)
+        </option>
+        <option value="MATH 2010|TTh|11:00am - 12:00pm|Building A, Room 102">
+          MATH 2010 - Calculus II (TTh 11:00am - 12:00pm)
+        </option>
+        <option value="PSYC 1010|MWF|2:00pm - 3:00pm|Building A, Room 203">
+          PSYC 1010 - Introduction to Psychology (MWF 2:00pm - 3:00pm)
+        </option>
+        <option value="POLS 1010|TTh|9:00am - 10:00am|Building B, Room 103">
+          POLS 1010 - American Government (TTh 9:00am - 10:00am)
+        </option>
+        <option value="MUSC 1010|MWF|12:00pm - 1:00pm|Building B, Room 104">
+          MUSC 1010 - Music Theory I (MWF 12:00pm - 1:00pm)
+        </option>
+        <option value="CHEM 1010|TTh|1:00pm - 2:00pm|Building C, Room 302">
+          CHEM 1010 - General Chemistry I (TTh 1:00pm - 2:00pm)
+        </option>
+      </select>
+      <button type="submit" class="btn btn-primary">Create</button> 
+    </form>
+    
+  <div class="show-playlist col-md-8">
+<table class="table">
+  <h1>My Class Schedule</h1>
+  <thead>
+    <tr>
+      <th>Schedule</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if planner.length}}
+      {{#each planner as |planner|}}
+        <tr>
+          <td>{{planner.name}}</td>
+          <td><button class="btn btn-sm btn-danger" data-id="{{planner.id}}">Delete</button></td>
+        </tr>
+      {{/each}}
+    {{/if}}
+  </tbody>
+</table>
+
+  </div>
+
+    <h2>List of Courses Available</h2>
+
+    <div class="class-list">
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 2720 - Data Structures</h3>
+          <p>
+            Introduces the fundamental data structures used in computer science,
+            including lists, stacks, queues, trees, and graphs. Emphasis is on
+            implementing and using these data structures in algorithms.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing math-class">
+        <div class="class-info">
+          <h3>
+            MATH 3020 - Applied Probability and Statistics for Computer Science
+          </h3>
+          <p>
+            Introduces the basic concepts of probability and statistics with
+            applications to computer science, including hypothesis testing,
+            estimation, regression analysis, and Markov chains.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 3350 - Software Development</h3>
+          <p>
+            A course in software development that satisfies the
+            communication-intensive requirement. Students work on a team
+            project, write software documentation, and give oral presentations.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing math-class">
+        <div class="class-info">
+          <h3>MATH 2641 - Linear Algebra I</h3>
+          <p>
+            An introduction to linear algebra, including vector spaces,
+            matrices, determinants, eigenvalues, eigenvectors, and linear
+            transformations. Emphasis is on solving systems of linear equations.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 3210 - Computer Organization and Programming</h3>
+          <p>
+            An introduction to computer organization and assembly language
+            programming. Topics include computer architecture, memory hierarchy,
+            assembly language syntax, and low-level programming techniques.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 3320 - System-Level Programming</h3>
+          <p>
+            An introduction to system-level programming in a UNIX-like
+            environment. Topics include file systems, processes, interprocess
+            communication, and network programming.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing math-class">
+        <div class="class-info">
+          <h3>MATH 1010 - Calculus I</h3>
+          <p>
+            An introduction to differential calculus, including limits,
+            derivatives, and applications. Topics also include integration and
+            applications of integration.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 4320 - Operating Systems</h3>
+          <p>
+            An introduction to operating systems, including process management,
+            memory management, file systems, and interprocess communication.
+            Emphasis is on implementing and evaluating these concepts.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 1000 - Introduction to Computer Science</h3>
+          <p>
+            An introduction to computer science, including algorithms, data
+            structures, programming, and software engineering principles.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 2000 - Data Structures and Algorithms</h3>
+          <p>
+            A study of data structures and algorithms, including arrays, linked
+            lists, stacks, queues, trees, graphs, sorting, and searching.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 3000 - Computer Organization and Architecture</h3>
+          <p>
+            An introduction to computer organization and architecture, including
+            digital logic, machine language, assembly language, and memory
+            hierarchy.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 5000 - Software Engineering</h3>
+          <p>
+            A study of software engineering principles, including requirements
+            analysis, design, testing, and project management.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 6000 - Database Systems</h3>
+          <p>
+            An introduction to database systems, including data modeling,
+            database design, SQL, and transaction management.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 7000 - Computer Networks</h3>
+          <p>
+            An introduction to computer networks, including network
+            architecture, protocols, and security.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 8000 - Artificial Intelligence</h3>
+          <p>
+            A study of artificial intelligence, including search algorithms,
+            knowledge representation, machine learning, and natural language
+            processing.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 9000 - Human-Computer Interaction</h3>
+          <p>
+            An introduction to human-computer interaction, including usability
+            testing, user interface design, and user-centered design principles.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 1001 - Web Development</h3>
+          <p>
+            A study of web development technologies, including HTML, CSS,
+            JavaScript, and server-side programming.
+          </p>
+        </div>
+      </div>
+
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 4330 - Programming Language Concepts</h3>
+          <p>
+            An introduction to programming language concepts, including syntax,
+            semantics, data types, control structures, functions, and
+            object-oriented programming. Emphasis is on language design and
+            implementation.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing computer-science">
+        <div class="class-info">
+          <h3>CSC 4520 - Design and Analysis of Algorithms</h3>
+          <p>
+            An introduction to the design and analysis of algorithms, including
+            divide-and-conquer, dynamic programming, greedy algorithms, and
+            graph algorithms. Emphasis is on analyzing algorithm performance
+            using asymptotic notation.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing other-class">
+        <div class="class-info">
+          <h3>ENG 101 - Composition and Rhetoric</h3>
+          <p>
+            An introduction to writing and rhetoric, including analysis,
+            argumentation, research, and documentation.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing science-class">
+        <div class="class-info">
+          <h3>BIO 201 - Anatomy and Physiology</h3>
+          <p>
+            An introduction to the anatomy and physiology of the human body,
+            including the musculoskeletal, cardiovascular, respiratory,
+            digestive, urinary, and reproductive systems.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing history-class">
+        <div class="class-info">
+          <h3>HIST 101 - World History I</h3>
+          <p>
+            An introduction to world history from prehistory to the early modern
+            era, including the development of civilizations, religions, trade
+            networks, and political systems.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing other-class">
+        <div class="class-info">
+          <h3>PHIL 201 - Introduction to Ethics</h3>
+          <p>
+            An introduction to ethical theory and practice, including theories
+            of morality, moral reasoning, and practical applications of ethical
+            principles.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing art-class">
+        <div class="class-info">
+          <h3>ART 101 - Drawing Fundamentals</h3>
+          <p>
+            An introduction to the fundamentals of drawing, including line,
+            shape, form, perspective, and composition.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing math-class">
+        <div class="class-info">
+          <h3>MATH 2010 - Calculus II</h3>
+          <p>
+            An introduction to differential and integral calculus, including
+            limits, derivatives, and applications to optimization and
+            integration.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing history-class">
+        <div class="class-info">
+          <h3>POLS 1010 - American Government</h3>
+          <p>
+            An introduction to American government and politics, including the
+            Constitution, federalism, civil liberties, and the policymaking
+            process.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing other-class">
+        <div class="class-info">
+          <h3>PSYC 1010 - Introduction to Psychology</h3>
+          <p>
+            An introduction to the scientific study of behavior and mental
+            processes, including perception, learning, memory, motivation,
+            emotion, and social behavior.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing art-class">
+        <div class="class-info">
+          <h3>MUSC 1010 - Music Theory I</h3>
+          <p>
+            An introduction to the fundamentals of music theory, including
+            notation, scales, chords, and harmony.
+          </p>
+        </div>
+      </div>
+      <div class="class-item class-listing science-class">
+        <div class="class-info">
+          <h3>CHEM 1010 - General Chemistry I</h3>
+          <p>
+            An introduction to the principles of general chemistry, including
+            atomic and molecular structure, chemical bonding, stoichiometry, and
+            thermodynamics.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</div>
+<script src="./js/planner.js"></script>
+
+
