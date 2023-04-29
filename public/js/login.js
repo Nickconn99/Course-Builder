@@ -1,4 +1,6 @@
-
+let selectedOptions = new Set(JSON.parse(localStorage.getItem('selectedOptions')) || []);
+selectedOptions.clear();
+localStorage.setItem('selectedOptions', JSON.stringify(Array.from(selectedOptions)));
   const loginFormHandler = async (event) => {
     event.preventDefault();
   
